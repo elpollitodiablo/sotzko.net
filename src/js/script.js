@@ -3,6 +3,8 @@ import { RedditTopOfTheDayComponent } from './RedditTopOfTheDayComponent.js';
 RedditTopOfTheDayComponent.register();
 
 const sections = document.querySelectorAll('.section-content');
+const covers = document.querySelectorAll('.section-cover');
+let coversLoaded = 0;
 
 const throttle = (fn, wait) => {
     let inThrottle, lastFn, lastTime;
@@ -32,18 +34,42 @@ const ckeckItemInView = (element) => {
     }
 };
 
+const onImageLoaded = (e) => {
+    console.log(`onImageLoaded ~ e`, e);
+    coversLoaded++;
+    if (coversLoaded === covers.length) {
+        anime({
+            targets: '#splash-container',
+            opacity: {
+                value: '0',
+                duration: 3000,
+            },
+        });
+    }
+};
+
 document.addEventListener(
     'scroll',
     throttle((e) => {
         sections.forEach((element) => ckeckItemInView(element));
-    }, 1000)
+    }, 100)
 );
 
-anime({
-    targets: '#splash-container',
-    opacity: {
-        value: '0',
-        duration: 3000,
-    },
-    delay: 1000,
+covers.forEach((cover) => {
+    const css = window.getComputedStyle(cover);
+    const re = /url\("(.+)"\)/;
+    const imageMatch = css.backgroundImage.match(re);
+    if (imageMatch[1]) {
+        console.log(`covers.forEach ~ imageMatch[1]`, imageMatch[1]);
+        const img = new Image();
+        img.src = imageMatch[1];
+        img.onload = (e) => {
+            onImageLoaded(e);
+        };
+        img.onerror = (e) => {
+            onImageLoaded(e);
+        };
+    } else {
+        coversLoaded++;
+    }
 });
