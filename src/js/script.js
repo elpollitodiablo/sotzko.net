@@ -37,13 +37,10 @@ const ckeckItemInView = (element) => {
 const onImageLoaded = (e) => {
     coversLoaded++;
     if (coversLoaded === covers.length) {
-        anime({
-            targets: '#splash-container',
-            opacity: {
-                value: '0',
-                duration: 3000,
-            },
-        });
+        document.querySelector('#splash-container .strp-grid').classList.add('off');
+        setTimeout(() => {
+            document.querySelector('#splash-container').classList.add('off');
+        }, 5000);
     }
 };
 
@@ -51,6 +48,8 @@ document.addEventListener(
     'scroll',
     throttle((e) => {
         sections.forEach((element) => ckeckItemInView(element));
+
+        document.querySelector('#splash-container').classList.add('off');
     }, 100)
 );
 sections.forEach((element) => ckeckItemInView(element));
