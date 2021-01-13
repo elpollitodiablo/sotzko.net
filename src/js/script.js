@@ -54,6 +54,7 @@ document.addEventListener(
         sections.forEach((element) => ckeckItemInView(element));
     }, 100)
 );
+sections.forEach((element) => ckeckItemInView(element));
 
 covers.forEach((cover) => {
     const css = window.getComputedStyle(cover);
