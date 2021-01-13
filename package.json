@@ -16,6 +16,7 @@
         "gulp-cli": "^2.3.0",
         "gulp-concat": "^2.6.1",
         "gulp-sass": "^4.1.0",
+        "gulp-uglifycss": "^1.1.0",
         "prettier": "^2.1.2"
     },
     "dependencies": {

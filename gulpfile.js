@@ -3,6 +3,7 @@ const sass = require('gulp-sass');
 const concat = require('gulp-concat');
 const browserSync = require('browser-sync').create();
 const fs = require('fs');
+const uglifycss = require('gulp-uglifycss');
 
 const src = {
     scss: 'src/scss/**/*.scss',
@@ -19,7 +20,13 @@ const sassCompile = (cb) => {
                 includePaths: ['node_modules'],
             }).on('error', sass.logError)
         )
-        .pipe(concat('style.css'))
+        .pipe(concat('style.min.css'))
+        .pipe(
+            uglifycss({
+                maxLineLen: 200,
+                uglyComments: true,
+            })
+        )
         .pipe(gulp.dest(src.css, { sourcemaps: '.' }))
         .pipe(browserSync.stream());
 
