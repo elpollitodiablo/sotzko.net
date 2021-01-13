@@ -1,0 +1,24 @@
+{
+    "name": "sotzko.net3",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "gulp serve --target=local"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@fortawesome/fontawesome-free": "^5.15.1",
+        "browser-sync": "^2.26.13",
+        "gulp": "^4.0.2",
+        "gulp-cli": "^2.3.0",
+        "gulp-concat": "^2.6.1",
+        "gulp-sass": "^4.1.0",
+        "prettier": "^2.1.2"
+    },
+    "dependencies": {
+        "bootstrap": "^5.0.0-alpha3"
+    }
+}

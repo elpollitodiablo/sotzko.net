@@ -1,0 +1,330 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&display=swap');
+
+$enable-rounded: false;
+$enable-shadows: true;
+$primary: rgb(135, 99, 251) !default;
+$primary-light: rgb(177, 154, 250) !default;
+$primary-dark: rgb(96, 64, 199) !default;
+$secondary: rgb(112, 195, 236) !default;
+$headings-font-family: 'Syne Mono', monospace;
+@import '../../node_modules/bootstrap/scss/bootstrap.scss';
+
+html,
+body {
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: 'Work Sans', sans-serif;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(245, 242, 255, 1) 35%,
+        rgba(240, 250, 255, 1) 64%,
+        rgba(255, 255, 255, 1) 100%
+    );
+    padding-bottom: 3rem;
+    hyphens: auto;
+}
+
+section {
+    .section-icon {
+        margin-right: map-get($spacers, 4);
+        width: 20%;
+        min-width: 200px;
+        text-align: center;
+        color: $secondary;
+
+        @media (max-width: 768px) {
+            font-size: 3rem;
+
+            min-width: 100px;
+        }
+
+        i {
+            font-size: 7rem;
+
+            @media (max-width: 768px) {
+                font-size: 3rem;
+            }
+        }
+    }
+
+    .section-content {
+        transition: transform 1s ease-out, opacity 1s ease-out;
+        &.off {
+            transform: translateY(50%);
+            opacity: 0;
+        }
+        ul {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0;
+            list-style-type: none;
+
+            li {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                padding: map-get($spacers, 2) map-get($spacers, 3);
+                &:before {
+                    content: '#';
+                    margin-right: 0.5rem;
+                    font-size: 2rem;
+                    line-height: 1;
+                    font-style: italic;
+                    color: $primary;
+                }
+            }
+        }
+    }
+}
+
+#splash-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(45deg, $primary 0%, $secondary 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+}
+.lds-grid {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+    transform: scale(4);
+}
+.lds-grid div {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+
+    background: $primary;
+    animation: lds-grid 1.2s linear infinite;
+}
+.lds-grid div:nth-child(1) {
+    top: 8px;
+    left: 8px;
+    animation-delay: 0s;
+}
+.lds-grid div:nth-child(2) {
+    top: 8px;
+    left: 32px;
+    animation-delay: -0.4s;
+}
+.lds-grid div:nth-child(3) {
+    top: 8px;
+    left: 56px;
+    animation-delay: -0.8s;
+}
+.lds-grid div:nth-child(4) {
+    top: 32px;
+    left: 8px;
+    animation-delay: -0.4s;
+}
+.lds-grid div:nth-child(5) {
+    top: 32px;
+    left: 32px;
+    animation-delay: -0.8s;
+}
+.lds-grid div:nth-child(6) {
+    top: 32px;
+    left: 56px;
+    animation-delay: -1.2s;
+}
+.lds-grid div:nth-child(7) {
+    top: 56px;
+    left: 8px;
+    animation-delay: -0.8s;
+}
+.lds-grid div:nth-child(8) {
+    top: 56px;
+    left: 32px;
+    animation-delay: -1.2s;
+}
+.lds-grid div:nth-child(9) {
+    top: 56px;
+    left: 56px;
+    animation-delay: -1.6s;
+}
+@keyframes lds-grid {
+    0%,
+    100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.section-cover {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-color: $gray-700;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.5;
+        background: linear-gradient(45deg, $primary-light 0%, $secondary 100%);
+    }
+
+    .section-heading {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: lighten($secondary, 25);
+        padding: 1rem 2rem;
+        box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+        text-align: center;
+    }
+}
+
+#main-cover {
+    flex-direction: column;
+    background-image: url(../img/pexels-kaboompics-com-6362.jpg);
+
+    #main-cover-logo {
+        position: absolute;
+        top: 35%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #fff;
+        box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+
+        @media (max-width: 768px) {
+            img {
+                max-width: 70vw;
+            }
+        }
+    }
+}
+
+#contact-cover {
+    background-image: url(../img/pexels-cottonbro-4065158.jpg);
+}
+
+#vita-cover {
+    background-image: url(../img/pexels-sebastian-voortman-189349.jpg);
+}
+
+#skills {
+    .skill {
+        display: flex;
+        align-items: center;
+        height: 40vh;
+
+        @media (max-width: 768px) {
+            margin-bottom: 3rem;
+            height: auto;
+        }
+    }
+}
+
+#contact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 3rem;
+    a {
+        font-size: 5rem;
+        color: $body-color;
+    }
+}
+
+#vita {
+    .vita-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        padding-bottom: 3rem;
+        margin-bottom: 3rem;
+        &:not(:last-of-type) {
+            border-bottom: 1px solid $secondary;
+        }
+
+        a[data-toggle='collapse'] {
+            font-size: 1.3rem;
+        }
+
+        .vita-logo a {
+            text-decoration: none;
+            color: $body-color;
+        }
+    }
+
+    .vita-logo {
+        max-width: 150px;
+
+        img {
+            max-width: 100%;
+        }
+    }
+
+    .vita-details {
+        width: 100%;
+        margin-top: 1rem;
+
+        a {
+            color: $body-color;
+            text-decoration: none;
+
+            &.collapsed i {
+                transform: rotate(0deg);
+            }
+
+            i {
+                transform: rotate(180deg);
+                transition: transform 0.2s ease-out;
+            }
+        }
+    }
+}
+
+.skill-level {
+    height: 0.3rem;
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.438);
+
+    &::before {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(45deg, $primary-dark 0%, $primary-light 100%);
+    }
+
+    &.skill4::before {
+        width: 75%;
+    }
+    &.skill3::before {
+        width: 50%;
+    }
+    &.skill2::before {
+        width: 25%;
+    }
+    &.skill1::before {
+        width: 12.5%;
+    }
+}
