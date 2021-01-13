@@ -264,7 +264,7 @@ section {
     .skill {
         display: flex;
         align-items: center;
-        height: 40vh;
+        min-height: 25vh;
 
         @media (max-width: 768px) {
             margin-bottom: 3rem;
