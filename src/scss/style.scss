@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&display=swap');
 
+/* bootstrap */
 $enable-rounded: false;
 $enable-shadows: true;
 $primary: rgb(135, 99, 251) !default;
@@ -8,7 +9,14 @@ $primary-light: rgb(177, 154, 250) !default;
 $primary-dark: rgb(96, 64, 199) !default;
 $secondary: rgb(112, 195, 236) !default;
 $headings-font-family: 'Syne Mono', monospace;
+
+/* Fontawesome */
+$fa-font-path: './webfonts' !default;
+
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';
+@import '../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss';
+@import '../../node_modules/@fortawesome/fontawesome-free/scss/brands.scss';
+@import '../../node_modules/@fortawesome/fontawesome-free/scss/solid.scss';
 
 html,
 body {
