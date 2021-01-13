@@ -56,10 +56,11 @@ document.addEventListener(
 sections.forEach((element) => ckeckItemInView(element));
 
 covers.forEach((cover) => {
-    const css = window.getComputedStyle(cover);
+    const css = window.getComputedStyle(cover, ':after');
     const re = /url\("(.+)"\)/;
     const imageMatch = css.backgroundImage.match(re);
-    if (imageMatch[1]) {
+
+    if (imageMatch && imageMatch[1]) {
         const img = new Image();
         img.src = imageMatch[1];
         img.onload = (e) => {
@@ -69,6 +70,7 @@ covers.forEach((cover) => {
             onImageLoaded(e);
         };
     } else {
+        onImageLoaded();
         coversLoaded++;
     }
 });

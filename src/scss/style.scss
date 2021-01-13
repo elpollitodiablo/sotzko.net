@@ -102,6 +102,7 @@ section {
     justify-content: center;
     align-items: center;
     pointer-events: none;
+    z-index: 9999;
 }
 .lds-grid {
     display: inline-block;
@@ -179,11 +180,9 @@ section {
     height: 100vh;
     margin-top: 3rem;
     margin-bottom: 2rem;
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-color: $gray-700;
+    overflow: hidden;
 
+    &::after,
     &::before {
         content: '';
         position: absolute;
@@ -191,8 +190,25 @@ section {
         left: 0;
         width: 100%;
         height: 100%;
+        z-index: 2;
+    }
+
+    &::before {
         opacity: 0.5;
         background: linear-gradient(45deg, $primary-light 0%, $secondary 100%);
+    }
+
+    &::after {
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-color: $gray-700;
+        z-index: 1;
+        transition: transform 1s ease-out;
+    }
+
+    &:hover:after {
+        transform: scale(1.05);
     }
 
     .section-heading {
@@ -204,12 +220,20 @@ section {
         padding: 1rem 2rem;
         box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
         text-align: center;
+        z-index: 3;
     }
 }
 
 #main-cover {
     flex-direction: column;
-    background-image: url(../img/pexels-kaboompics-com-6362.jpg);
+
+    &::after {
+        background-image: url(../img/pexels-kaboompics-com-6362.jpg);
+    }
+
+    #tag-line {
+        transform: translate(-50%, 0%);
+    }
 
     #main-cover-logo {
         position: absolute;
@@ -218,6 +242,7 @@ section {
         transform: translate(-50%, -50%);
         background-color: #fff;
         box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+        z-index: 3;
 
         @media (max-width: 768px) {
             img {
@@ -227,11 +252,11 @@ section {
     }
 }
 
-#contact-cover {
+#contact-cover:after {
     background-image: url(../img/pexels-cottonbro-4065158.jpg);
 }
 
-#vita-cover {
+#vita-cover:after {
     background-image: url(../img/pexels-sebastian-voortman-189349.jpg);
 }
 
