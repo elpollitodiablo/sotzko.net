@@ -11,11 +11,13 @@ export class RedditTopOfTheDayComponent extends HTMLElement {
         this.subreddit = null;
 
         this._top = null;
+        this._link = '#';
+        this._image = '../img/8oxuwlofe8b61.jpg';
+        this._title = null;
     }
 
     /* WC Hooks */
     connectedCallback() {
-        this.innerHTML = html`<h1>alive!</h1>`;
         this._fetchTopPost();
     }
 
@@ -33,6 +35,8 @@ export class RedditTopOfTheDayComponent extends HTMLElement {
             .then((res) => res.json())
             .then((res) => {
                 this._findTopImagePost(res.data);
+            })
+            .finally(() => {
                 this._render();
             });
     }
@@ -41,6 +45,9 @@ export class RedditTopOfTheDayComponent extends HTMLElement {
         data.children.forEach((post) => {
             if (!this._top || post.data.score > this._top.data.score) {
                 this._top = post;
+                this._image = post.data.url;
+                this._link = post.data.permalink;
+                this._title = post.data.title;
             }
         });
     }
@@ -48,8 +55,8 @@ export class RedditTopOfTheDayComponent extends HTMLElement {
     _render() {
         this.innerHTML = `
             <div class="reddit-top-of-the-day">
-                <a href="https://www.reddit.com/${this._top.data.permalink}" target="_blank" rel="noopener noreferrer">
-                    <img src="${this._top.data.url}" alt="${this._top.data.title}" style="max-width:100%" />
+                <a href="https://www.reddit.com/${this._link}" target="_blank" rel="noopener noreferrer">
+                    <img src="${this._image}" alt="${this._title}" style="max-width:100%" />
                 </a>
             </div>
         `;
