@@ -300,9 +300,25 @@ section {
 
 #main-cover {
     flex-direction: column;
+    height: 95vh;
 
-    &::after {
+    &:before {
+        z-index: 3;
+    }
+
+    &:after {
         background-image: url(../img/pexels-kaboompics-com-6362.jpg);
+    }
+
+    video {
+        width: 100%;
+        min-height: 100vh;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        object-fit: cover;
+        z-index: 2;
     }
 
     #tag-line {
