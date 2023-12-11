@@ -15,11 +15,12 @@
         "gulp": "^4.0.2",
         "gulp-cli": "^2.3.0",
         "gulp-concat": "^2.6.1",
-        "gulp-sass": "^4.1.0",
+        "gulp-sass": "^5.1.0",
         "gulp-uglifycss": "^1.1.0",
         "prettier": "^2.1.2"
     },
     "dependencies": {
-        "bootstrap": "^5.0.0-alpha3"
+        "bootstrap": "^5.0.0-alpha3",
+        "sass": "^1.69.5"
     }
 }
